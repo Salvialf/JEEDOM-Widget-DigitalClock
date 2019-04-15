@@ -1,0 +1,59 @@
+<!-- ** Forked from https://codepen.io/gau/pen/LjQwGp/ ** -->
+
+<div data-type="info" data-subtype="string" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#">
+    <div id="clock#uid#">
+    <span class="date#uid#">{{ date }}</span>
+    <span class="time#uid#">{{ time }}</span>
+	</div>
+    <style>
+#clock#uid# {
+  	margin-top:10px;
+  	width: 200px;
+  	height: 80px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0.75);
+    }
+.date#uid# {
+    letter-spacing: 0.1em;
+    font-size: 15px;
+    font-weight:bold;
+    }
+.time#uid# {
+    letter-spacing: 0.05em;
+    font-weight:bold;
+    font-size: 40px;
+ 	line-height:45px; 	
+    }
+  </style>
+  <script>
+      $.include(['plugins/widget/core/template/dashboard/cmd.info.string.Digital_Clock_Vue/vue.min.js'], function() {
+      
+    var clock = new Vue({
+    el: '#clock#uid#',
+    data: {
+        time: '',
+        date: ''
+    }
+});
+var week = ['DIM.', 'LUN.', 'MAR.', 'MER.', 'JEU.', 'VEN.', 'SAM.'];
+var timerID = setInterval(updateTime, 1000);
+updateTime();
+function updateTime() {
+    var cd = new Date();
+    clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+    clock.date = week[cd.getDay()]+' '+zeroPadding(cd.getDate(), 2)+'/'+zeroPadding(cd.getMonth()+1, 2)+'/'+zeroPadding(cd.getFullYear(), 4);
+};
+
+function zeroPadding(num, digit) {
+    var zero = '';
+    for(var i = 0; i < digit; i++) {
+        zero += '0';
+    }
+    return (zero + num).slice(-digit);
+}
+        });
+  </script>
