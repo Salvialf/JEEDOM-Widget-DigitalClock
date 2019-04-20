@@ -1,4 +1,15 @@
 <!-- ** Forked from https://codepen.io/gau/pen/LjQwGp/ ** -->
+
+<!--   *******      PARAMETRES    *******      		-->		<!--		*******  POLICES INTEGREES  *******			-->
+<!-- 'datefont': choix police date  				-->		<!-- alarm, arcade1, arcade2, arcade3, astronomic, atomic, 	
+<!-- 'datesize': taille date en pixels				-->		<!-- clubland, digit, digital7, digital7dot, digital7led,
+<!-- 'dateweight': épaiseur date (normal ou bold)	--> 	<!-- digitaldust, dismay, frida1, frida2, frida3, grapam,
+<!-- 'timefont': choix police heure					--> 	<!-- habesha1, habesha2, habesha3, identification, label,
+<!-- 'timesize': taille heure en pixels				--> 	<!-- lcd14, lcdmu, lcdpixel, ledboard, ledboard2, monochrome,
+<!-- 'timeweight': épaiseur heure (normal ou bold)	--> 	<!-- prisma, segment, shmup, squarecurved, squareforced, 
+<!-- 'halo': (on, off, flame, rainbow, neon)		--> 	<!-- squarehead, starfish, taurus, tesla, verily			-->
+
+
 <div  data-type="info" data-subtype="string" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#">
   	<div id="clock#uid#">
     <div class="date#uid#" id="date#uid#">{{ date }}</div>
@@ -51,7 +62,7 @@ timeFont.load().then(function (loadedFace) {
     var SeldateSize = ('#datesize#' !='#'+'datesize#') ? "#datesize#":"20"; document.getElementById('date#uid#').style.fontSize = SeldateSize+'px';
     var SeltimeSize = ('#timesize#' !='#'+'timesize#') ? "#timesize#":"45"; document.getElementById('time#uid#').style.fontSize = SeltimeSize+'px';
 	var SeldateWeight = ('#dateweight#' !='#'+'dateweight#') ? "#dateweight#":"bold"; document.getElementById('date#uid#').style.fontWeight = SeldateWeight;
-    var SeltimeWeight = ('#timeweight#' !='#'+'timeweight#') ? "#timeweight#":"normal"; document.getElementById('time#uid#').style.fontWeight = SeltimeWeight;
+    var SeltimeWeight = ('#timeweight#' !='#'+'timeweight#') ? "#timeweight#":"bold"; document.getElementById('time#uid#').style.fontWeight = SeltimeWeight;
     
     var displayBlur = ('#halo#' !='#'+'halo#') ? "#halo#":"on";
     if (displayBlur == 'on') { 
