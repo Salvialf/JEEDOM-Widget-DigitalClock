@@ -1,6 +1,6 @@
 # Digital_Clock_Vue
 
-Widget pour Jeedom permettant d'afficher une horloge digitale intégrant la date et l'heure avec affichage des secondes à partir d'un virtuel.
+Widget pour Jeedom permettant d'afficher, à partir d'un virtuel, une horloge digitale intégrant la date et l'heure avec affichage des secondes.
 
 <img src="/icon.png" alt="présentation"/>
 
