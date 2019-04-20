@@ -6,6 +6,7 @@ Widget pour Jeedom permettant d'afficher, à partir d'un virtuel, une horloge di
 
 >**Important**: le plugin "Virtuel" doit être installé et activé.
 
+## Installation:  
 Après avoir téléchargé le widget il est nécessaire de créer un nouveau virtuel en cliquant sur le bouton "**+Ajouter**", de lui donner un nom (*"Horloge"* par exemple) et de valider en cliquant sur la case "**D'accord**":
 <img src="/doc/newVirt.jpg" alt="nouveau virtuel"/>
 
@@ -23,12 +24,44 @@ Cliquer sur le bouton représentant une roue crantée pour accéder à la config
 
 Sauvegarder le virtuel, l'horloge est à présent installée et fonctionnelle.
 
----------------------------
+## Paramètres optionnels:  
+De nombreux paramètres optionnels sont inclus afin d'être en mesure de générer une horloge unique en fonction des goûts de chacun. L'ensemble des paramètres est rappelé au début du code du widget.
 
-Pour aller plus loin, il est possible de choisir la couleur d'affichage de l'horloge.
+#### Date:  
+* **datefont**: permet de sélectionner la police d'écriture *(ou "font")* pour la date.
+* **datesize**: choix de la taille de la date en pixels. *('20' par défaut)*
+* **dateweight**: choix de l'épaisseur du texte de la date - *normal* ou *bold*. *('bold' par défaut)*
+>**Astuce**: une **datesize** à 0 fait disparaître la date.
+
+#### Heure:
+* **timefont**: permet de sélectionner la police d'écriture *(ou "font")* pour l'heure.
+* **timesize**:  choix de la taille de l'heure en pixels. *('45' par défaut)*
+* **timeweight**: choix de l'épaisseur du texte de l'heure - *normal* ou *bold*. *('bold' par défaut)*
+>**Astuce**: une **timesize** à 0 fait disparaître l'heure.
+
+38 polices d'écritures différentes sont d'ores et déjà intégrées dans le widget. La liste de ces polices est consultable <a href="/doc/FontList.md">ici</a> et est rappelée au début du code dans le widget.  
+Il est également possible d'intégrer vos propres polices d'écriture, pour se faire il suffit d'ajouter le fichier \*.ttf au widget via le bouton *"**Fichiers**"*.  
+>**Astuce**: les fichiers avec l'extension \*.otf peuvent être modifiés en \*.ttf.  
+>**Attention**: le nom du fichier ne doit pas comporter d'espaces et l'extension \*.ttf doit être en minuscule.
+
+#### Horloge:
+* **halo**: permet de faire apparaître ou disparaître le halo lumineux autour de l'horloge. *('on' par défaut)*
+
+## Personnalisation avancée:  
+Il est possible de choisir la couleur d'affichage de l'horloge.
 
 Pour se faire cliquer sur le bouton "**Configuration avancée**" du virtuel afin d'accéder à la configuration de l'équipement et aller sur l'onglet *"Affichage"*. Dans la rubrique *"Widget"* à la ligne *"Couleur du texte"* vous pouvez sélectionner la couleur de l'horloge indépendamment sur le Dashboard, le Design ou sur une Vue:
 <img src="/doc/configColor.jpg" alt="config couleur"/>
-
 >Exemples de rendu:   
 ><img src="/doc/exemples.jpg" alt="exemples"/>
+
+Le paramètre optionnel **halo** inclut également différents styles tels que:
+* **flame**: effet flamme.
+* **rainbow**: effet arc-en-ciel.
+* **neon**: effet néon animé.
+>Exemples de rendu:   
+><img src="/doc/exempleshalo.jpg" alt="exempleshalo"/><img src="/doc/exempleneon.gif" alt="exempleneon"/>
+
+Pour aller plus loin dans la personnalisation, il est tout à fait possible de créer 2 commandes dans le virtuel dont le widget serait appliquée sur chacune et de cacher la date sur l'une et l'heure sur l'autre (**datesize** = 0 & **timesize** = 0).
+
+
