@@ -1,0 +1,103 @@
+<!--   *******      PARAMETRES    *******      		-->		<!--		*******  POLICES INTEGREES  *******			-->
+<!-- 'datefont': choix police date  				-->		<!-- alarm, arcade1, arcade2, arcade3, astronomic, atomic, 	
+<!-- 'datesize': taille date en pixels				-->		<!-- clubland, digit, digital7, digital7dot, digital7led,
+<!-- 'dateweight': épaisseur date (normal ou bold)	--> 	<!-- digitaldust, dismay, frida1, frida2, frida3, grapam,
+<!-- 'timefont': choix police heure					--> 	<!-- habesha1, habesha2, habesha3, identification, label,
+<!-- 'timesize': taille heure en pixels				--> 	<!-- lcd14, lcdmu, lcdpixel, ledboard, ledboard2, monochrome,
+<!-- 'timeweight': épaisseur heure (normal ou bold)	--> 	<!-- prisma, segment, shmup, squarecurved, squareforced, 
+<!-- 'halo': (on, off, flame, rainbow, neon)		--> 	<!-- squarehead, starfish, taurus, tesla, verily			-->
+<!-- 'color': couleur de l'horloge					-->
+<div class="cmd-widget" data-type="info" data-subtype="string" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" style="display: block;">
+  	<div id="clock#uid#">
+    <div class="date#uid#"></div>
+    <div class="time#uid#"></div>
+  	</div>
+    <style>     
+@keyframes neon {
+    0%     	{ color: #7f7f7f; text-shadow: 0 0 3px #606060, 0 0 5px #606060; }
+    1%      { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+  	10%     { color: #7f7f7f; text-shadow: 0 0 3px #606060, 0 0 5px #606060; }
+  	11%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+    24%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+    26%     { color: #7f7f7f; text-shadow: 0 0 3px #606060, 0 0 5px #606060; }
+    28%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;}
+    34%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor, 0 0 25px currentColor; }
+    37%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+    57%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor, 0 0 25px currentColor; }
+    60%     { color: #7f7f7f; text-shadow: 0 0 3px #606060, 0 0 5px #606060; }
+    61%     { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+    96%    	{ color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor; }
+    100%    { color: currentColor; text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor, 0 0 25px currentColor, 0 0 30px currentColor; }
+}
+  </style>
+  <script>
+    var dateFontTag = ('#datefont#');
+    var timeFontTag = ('#timefont#');
+    
+    if (dateFontTag !='#'+'datefont#') {
+    var dateFont = new FontFace(dateFontTag, "url(data/customTemplates/dashboard/cmd.info.string.Digital_Clock_Vue/"+dateFontTag+".ttf)", {});
+dateFont.load().then(function (loadedFace) {
+  document.fonts.add(loadedFace);
+  var dftags = document.getElementsByClassName("date#uid#");
+  for (var i = 0; i < dftags.length; i++) {
+    dftags[i].style.fontFamily = dateFontTag;
+  }
+});
+    } else {}
+    
+    if (timeFontTag !='#'+'timefont#') {
+    var timeFont = new FontFace(timeFontTag, "url(data/customTemplates/dashboard/cmd.info.string.Digital_Clock_Vue/"+timeFontTag+".ttf)", {});
+timeFont.load().then(function (loadedFace) {
+  document.fonts.add(loadedFace);
+  var tftags = document.getElementsByClassName("time#uid#");
+  for (var i = 0; i < tftags.length; i++) {
+    tftags[i].style.fontFamily = timeFontTag;
+  }
+});
+    } else {}
+    
+    var SeldateSize = ('#datesize#' !='#'+'datesize#') ? "#datesize#":20; $('.date#uid#').css('font-size',SeldateSize+'px');
+    var SeltimeSize = ('#timesize#' !='#'+'timesize#') ? "#timesize#":45; $('.time#uid#').css('font-size',SeltimeSize+'px');
+	var SeldateWeight = ('#dateweight#' !='#'+'dateweight#') ? "#dateweight#":"bold"; $('.date#uid#').css('font-weight',SeldateWeight);
+    var SeltimeWeight = ('#timeweight#' !='#'+'timeweight#') ? "#timeweight#":"bold"; $('.time#uid#').css('font-weight',SeltimeWeight);
+    
+    var displayBlur = ('#halo#' !='#'+'halo#') ? "#halo#":"on";
+    if (displayBlur == 'on') { 
+    $('#clock#uid#').css({"color":"#color#", "text-shadow":"0 0 20px #color#, 0 0 20px #color#"});
+    }
+    else if (displayBlur == 'flame') { 
+    $('#clock#uid#').css('text-shadow','0 0 2px #eee, 0 0 4px #fff, 0 -2px 4px #ff3, 2px -4px 6px #fd3, -2px -6px 11px #f80, 2px -8px 18px #f20');
+    }
+    else if (displayBlur == 'rainbow') { 
+    $('#clock#uid#').css('text-shadow','3px 0 0 rgb(217,31,38,0.75), 6px 0 0 rgb(226,91,14,0.75), 9px 0 0 rgb(245,221,8,0.75), 12px 0 0 rgb(5,148,68,0.75), 15px 0 0 rgb(2,135,206,0.75), 18px 0 0 rgb(4,77,145,0.75), 21px 0 0 rgb(42,21,113,0.75)');
+    }
+    else if (displayBlur == 'neon') { 
+    $('#clock#uid#').css('animation','neon 10s both ease-in-out infinite alternate');
+    }
+    else {$('#clock#uid#').css('color','#color#')};
+    
+    $.include(['data/customTemplates/dashboard/cmd.info.string.Digital_Clock_Vue/vue.min.js'], function() {
+      
+    var clock = new Vue({
+    el: '#clock#uid#',
+    data: {
+        time: '',
+        date: ''
+    }
+});
+	var week = ['DIM.', 'LUN.', 'MAR.', 'MER.', 'JEU.', 'VEN.', 'SAM.'];
+/*  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'UTC', timeZoneName: 'short' };*/
+	var timerID = setInterval(updateTime, 1000);
+	updateTime();
+	function updateTime() {
+    var cd = new Date();
+  	clock.time = cd.toLocaleTimeString();
+    clock.date = week[cd.getDay()]+' '+cd.toLocaleDateString();
+/*  clock.date = cd.toLocaleString("fr-FR", options); */
+      
+      $('.date#uid#').html(clock.date);
+      $('.time#uid#').html(clock.time);
+	};
+});
+  </script>
+</div>
