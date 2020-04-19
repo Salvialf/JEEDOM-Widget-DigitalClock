@@ -11,12 +11,12 @@
 <!-- ###########  -  by @SALVIALF ;)  -   ############# -->		  <!-- ********************************************** -->
 
 <div class="cmd cmd-widget" data-type="info" data-subtype="string" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
-  <div id="clock">  
-  	<div style="line-height:110%;" id="date#id#"></div>
-    <div style="line-height:110%;" id="time#id#"></div>
+  <div id="customClock">  
+  	<div style="line-height:110%;" id="date"></div>
+    <div style="line-height:110%;" id="time"></div>
   </div>
   <script>
-    $(document).ready(function() {
+    $( document ).ready(function() {
     var cmd = $('.cmd[data-cmd_id=#id#]');
     var dateSize = ('#datesize#' !='#'+'datesize#' && '#datesize#'!='') ? "#datesize#":20; 
     var timeSize = ('#timesize#' !='#'+'timesize#' && '#timesize#'!='') ? "#timesize#":40; 
@@ -27,22 +27,22 @@
     let dFont = new FontFace(dateFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+dateFont+".ttf)");
 	dFont.load();
 	document.fonts.add(dFont);
-    cmd.find('#date#id#').css('font-family', dateFont);
+    cmd.find('#date').css('font-family', dateFont);
     }
     if ('#timefont#'!='#'+'timefont#' && '#timefont#'!='') {
     let timeFont = '#timefont#';
     let tFont = new FontFace(timeFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+timeFont+".ttf)");
 	tFont.load()
   	document.fonts.add(tFont);
-    cmd.find('#time#id#').css('font-family', timeFont);
+    cmd.find('#time').css('font-family', timeFont);
     }
     
-	cmd.find('#date#id#').css({'font-size': dateSize+'px'});
-    cmd.find('#time#id#').css({'font-size': timeSize+'px'});
+	cmd.find('#date').css({'font-size': dateSize+'px'});
+    cmd.find('#time').css({'font-size': timeSize+'px'});
     
-    setInterval(updateTime, 1000);
-	updateTime();
-	function updateTime() {
+    setInterval(updateClock, 1000);
+	updateClock();
+	function updateClock() {
 	let week = ['DIM.', 'LUN.', 'MAR.', 'MER.', 'JEU.', 'VEN.', 'SAM.'];
     let weekFull = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
     let cd = new Date();
@@ -52,15 +52,14 @@
   	let time = ('#secondes#' == 'off') ? 
         		cd.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 
     			cd.toLocaleTimeString('fr-FR');
-     
-      document.getElementById('date#id#').innerHTML = date;
-      document.getElementById('time#id#').innerHTML = time;
+   
+      cmd.find('#date').html(date);
+      cmd.find('#time').html(time);
     };
  
     ('#halo#' == 'on') ?
-    	cmd.find('#clock').css({'color':color, 'text-shadow':"0 0 20px "+color+", 0 0 20px "+color+""}) :
-    	cmd.find('#clock').css('color',color);
-      
-      });
+    	cmd.find('#customClock').css({'color':color, 'text-shadow':"0 0 20px "+color+", 0 0 20px "+color+""}) :
+    	cmd.find('#customClock').css('color',color);
+	});
 </script>
 </div>
