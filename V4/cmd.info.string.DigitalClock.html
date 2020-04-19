@@ -16,6 +16,7 @@
     <div style="line-height:110%;" id="time#id#"></div>
   </div>
   <script>
+    $(document).ready(function() {
     var cmd = $('.cmd[data-cmd_id=#id#]');
     var dateSize = ('#datesize#' !='#'+'datesize#' && '#datesize#'!='') ? "#datesize#":20; 
     var timeSize = ('#timesize#' !='#'+'timesize#' && '#timesize#'!='') ? "#timesize#":40; 
@@ -39,7 +40,6 @@
 	cmd.find('#date#id#').css({'font-size': dateSize+'px'});
     cmd.find('#time#id#').css({'font-size': timeSize+'px'});
     
-   $( document ).ready(function() {
     setInterval(updateTime, 1000);
 	updateTime();
 	function updateTime() {
@@ -52,14 +52,15 @@
   	let time = ('#secondes#' == 'off') ? 
         		cd.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 
     			cd.toLocaleTimeString('fr-FR');
-      
+     
       document.getElementById('date#id#').innerHTML = date;
       document.getElementById('time#id#').innerHTML = time;
     };
-	});
  
     ('#halo#' == 'on') ?
     	cmd.find('#clock').css({'color':color, 'text-shadow':"0 0 20px "+color+", 0 0 20px "+color+""}) :
     	cmd.find('#clock').css('color',color);
+      
+      });
 </script>
 </div>
