@@ -23,14 +23,14 @@
     
     if ('#datefont#'!='#'+'datefont#' && '#datefont#'!='') {
     let dateFont = '#datefont#';
-    let dFont = new FontFace(dateFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+dateFont+".ttf)");
+    let dFont = new FontFace(dateFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClockVue/"+dateFont+".ttf)");
 	dFont.load();
 	document.fonts.add(dFont);
     cmd.find('#date').css('font-family', dateFont);
     }
     if ('#timefont#'!='#'+'timefont#' && '#timefont#'!='') {
     let timeFont = '#timefont#';
-    let tFont = new FontFace(timeFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+timeFont+".ttf)");
+    let tFont = new FontFace(timeFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClockVue/"+timeFont+".ttf)");
 	tFont.load()
   	document.fonts.add(tFont);
     cmd.find('#time').css('font-family', timeFont);
