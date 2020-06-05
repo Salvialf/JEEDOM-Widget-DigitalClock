@@ -1,0 +1,65 @@
+<div class="cmd cmd-widget" data-type="info" data-subtype="string" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+<!-- ################ - DigitalClock - ################		   	
+ **********     Paramètres Optionnels     ********* 	    ******* 		 POLICES INTEGREES       *******
+ datefont = choix police date (police Jeedom par défaut)   alarm, arcade1, arcade2, arcade3, astronomic, atomic, 	
+ datesize = taille date en pixels (20 par défaut)		   clubland, digit, digital7, digital7dot, digital7led,
+ timefont = choix police heure (police Jeedom par défaut)  digitaldust, dismay, frida1, frida2, frida3, grapam,
+ timesize = taille heure en pixels (40 par défaut)		   habesha1, habesha2, habesha3, identification, label,
+ color = couleur de l'horloge (couleur thème par défaut)   lcd14, lcdmu, lcdpixel, ledboard, ledboard2, monochrome,
+ disposition = présentation (complet | compact par défaut) prisma, segment, shmup, squarecurved, squareforced, 
+ halo = halo autour de l'horloge (on | off par défaut) 	   squarehead, starfish, taurus, tesla, verily
+ secondes = cacher les secondes (off | on par défaut)	    **********************************************
+ ###########  -  by @SALVIALF ;)  -   ############# -->
+
+  <div id="customClock">  
+  	<div style="line-height:110%;" id="date"></div>
+    <div style="line-height:110%;" id="time"></div>
+  </div>
+  <script>
+    $( document ).ready(function() {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    var dateSize = ('#datesize#' !='#'+'datesize#' && '#datesize#'!='') ? "#datesize#":20; 
+    var timeSize = ('#timesize#' !='#'+'timesize#' && '#timesize#'!='') ? "#timesize#":40; 
+    var color = ('#color#' !='#'+'color#' && '#color#'!='') ? '#color#' : 'currentColor';
+    
+    if ('#datefont#'!='#'+'datefont#' && '#datefont#'!='') {
+    let dateFont = '#datefont#';
+    let dFont = new FontFace(dateFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+dateFont+".ttf)");
+	dFont.load();
+	document.fonts.add(dFont);
+    cmd.find('#date').css('font-family', dateFont);
+    }
+    if ('#timefont#'!='#'+'timefont#' && '#timefont#'!='') {
+    let timeFont = '#timefont#';
+    let tFont = new FontFace(timeFont, "url(data/customTemplates/dashboard/cmd.info.string.DigitalClock/"+timeFont+".ttf)");
+	tFont.load()
+  	document.fonts.add(tFont);
+    cmd.find('#time').css('font-family', timeFont);
+    }
+    
+	cmd.find('#date').css({'font-size': dateSize+'px'});
+    cmd.find('#time').css({'font-size': timeSize+'px'});
+    
+    setInterval(updateClock, 1000);
+	updateClock();
+	function updateClock() {
+	let week = ['DIM.', 'LUN.', 'MAR.', 'MER.', 'JEU.', 'VEN.', 'SAM.'];
+    let weekFull = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    let cd = new Date();
+    let date = ('#disposition#' == 'complet') ? 
+        		weekFull[cd.getDay()]+'<br/>'+cd.toLocaleDateString('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'}) : 
+    			week[cd.getDay()]+' '+cd.toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric'});
+  	let time = ('#secondes#' == 'off') ? 
+        		cd.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 
+    			cd.toLocaleTimeString('fr-FR');
+   
+      cmd.find('#date').html(date);
+      cmd.find('#time').html(time);
+    };
+ 
+    ('#halo#' == 'on') ?
+    	cmd.find('#customClock').css({'color':color, 'text-shadow':"0 0 20px "+color+", 0 0 20px "+color+""}) :
+    	cmd.find('#customClock').css('color',color);
+	});
+</script>
+</div>
